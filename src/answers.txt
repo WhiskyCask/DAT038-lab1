@@ -1,0 +1,62 @@
+Task 1: figuring out the complexity
+-----------------------------------
+
+Insertion.java on:
+  random inputs: Quadratic (n^2)
+  95% sorted inputs: Quadratic (n^2)
+  sorted inputs: Linear (n)
+
+Quick.java on:
+  random inputs: Linearitmic (nlogn)
+  95% sorted inputs: Linearitmic (nlogn)
+  sorted inputs: Quadratic (n^2)
+
+Merge.java on:
+  random inputs: Linearithmic (nlogn)
+  95% sorted inputs: Linearithmic (nlogn)
+  sorted inputs: Linearithmic (nlogn)
+
+Arrays.sort on:
+  random inputs: Linearithmic (nlogn)
+  95% sorted inputs: Linearithmic (nlogn)
+  sorted inputs: Linearithmic (nlogn)
+
+Task 2: improving quicksort
+---------------------------
+
+Do the following changes affect the complexity of quicksort on any kind of
+input data? If so, what is it that changes?
+
+  Shuffling the array first: [no] [yes+reason]
+
+  Median-of-three pivot selection: [no] [yes+reason]
+
+  Insertion sort for small arrays: [no] [yes+reason]
+
+Which combination of improvements gives the best result?
+If you use insertion sort for small arrays, say what cutoff you used.
+
+[...answer here...]
+
+Shuffling the array first: [no] [yes+reason]
+
+Yes, since we're selecting our pivot element as the first element (i.e. the minimum value) we get a worse case scenario when the array is sorted, and
+we get quadratic complexity. Therefore sorting the already sorted and almost sorted arrays went significantly faster,
+since the complexity went from quadratic to linearithmic. Because when we shuffle the array the probability that the array is sorted is pretty much negligible.
+
+Median-of-three pivot selection: [no] [yes+reason]
+
+Yes, we're selecting three values who hopefully are all different from each other and by selecting the median we guarantee that we're not going the get
+the maximum or the minimum value, so we guarantee that we are not going to get a worse case scenario which means we're going to get linearithmic complexity.
+
+Insertion sort for small arrays: [no] [yes+reason]
+
+Yes one a small improvement could be seen for the array filled with sorted values because for small values
+it went to insertion sort which has linear complexity for a sorted values instead of sticking to the quadratic
+complexity of quicksort. Although the complexity still remained quadratic.
+
+Which combination of improvements gives the best result?
+If you use insertion sort for small arrays, say what cutoff you used.
+
+A combination of median-of-three pivot selection and insertion sort with cutoff set to 100, (even though the course literature recommended a cutoff between five and fifteen)
+gave the best results.
